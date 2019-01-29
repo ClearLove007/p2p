@@ -1,0 +1,32 @@
+package p2p.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import p2p.model.Customer;
+import p2p.service.CustomerService;
+
+@Controller
+@RequestMapping("/customer")
+public class CustomerController {
+
+	@Autowired
+	private CustomerService customerService;
+	
+	@RequestMapping("/register")
+	public String register(Customer customer) {
+		try {
+			customerService.insertCustomerInformation(customer);
+			return "forward:/success.jsp";
+		} catch (Exception e) {
+			return "forward:/error.jsp";
+		}
+	}
+	
+	@RequestMapping("/login")
+	public String login() {
+		
+		return "";
+	}
+}

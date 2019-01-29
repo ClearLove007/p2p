@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="p2p.mapper.CustomerMapper">
+	
+	<insert id="insertCustomerInformation" parameterType="Customer">
+		INSERT INTO customer VALUES(#{cid},#{password},#{idcard},#{tradepassword},#{email},#{bankcard})
+	</insert>
+	
+	<update id="updatePassword" parameterType="String">
+		UPDATE customer SET password = 123456 WHERE cid = 1
+	</update>
+	
+	<select id="selectCid" parameterType="String" resultType="Customer">
+		select * from customer where cid = #{cid}
+	</select>
+	
+</mapper>
