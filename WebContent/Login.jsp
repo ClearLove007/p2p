@@ -25,25 +25,19 @@
 	<!--登录注册表-->
 	<div class="wel" id="from">
 		<div class="box-2 le-1">
-			<form action="" method="post">
+			<form action="<%= request.getContextPath()%>/customer/login" method="post">
 				<div class="flrg">
 					<h3>登录</h3>
 					<div class="a">
 						<!--<label>账号：</label>-->
-						<input type="text" class="in-1" placeholder="请输入账号">
+						<input type="text" class="in-1" placeholder="请输入账号" name="cid"/>
 					</div>
 					<div class="a">
 						<!--<label>密码：</label>-->
-						<input type="password" class="in-1" placeholder="请输入密码">
+						<input type="password" class="in-1" placeholder="请输入密码" name="password"/>
 					</div>
 					<div class="a">
-						<button type="button">登录</button>
-					</div>
-					<div class="a">
-						<div class="hr"></div>
-					</div>
-					<div class="a">
-						<a href="#">忘记密码？</a>
+						<input type="submit" value="登陆"/>
 					</div>
 				</div>
 			</form>

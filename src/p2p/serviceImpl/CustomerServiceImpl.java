@@ -1,5 +1,7 @@
 package p2p.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +22,9 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public void updatePassword(String password) {
+	public Customer validation(Customer customer) {
 		// TODO 自动生成的方法存根
-
+		return customerMapper.validation(customer);
 	}
 
 }

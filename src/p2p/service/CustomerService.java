@@ -1,5 +1,7 @@
 package p2p.service;
 
+import java.util.List;
+
 import p2p.model.Customer;
 
 public interface CustomerService {
@@ -10,7 +12,7 @@ public interface CustomerService {
 	public void insertCustomerInformation(Customer customer);
 	
 	/*
-	 * update密码
+	 * 验证身份
 	 */
-	public void updatePassword(String password);
+	public Customer validation(Customer customer);
 }

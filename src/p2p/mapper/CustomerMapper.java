@@ -1,5 +1,7 @@
 package p2p.mapper;
 
+import java.util.List;
+
 import p2p.model.Customer;
 
 public interface CustomerMapper {
@@ -10,12 +12,7 @@ public interface CustomerMapper {
 	public void insertCustomerInformation(Customer customer);
 	
 	/*
-	 * update密码
+	 * 验证身份
 	 */
-	public void updatePassword(String password);
-	
-	/*
-	 * 验证id
-	 */
-	public Customer selectCid(String cid);
+	public Customer validation(Customer customer);
 }
