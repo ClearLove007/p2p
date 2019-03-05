@@ -1,10 +1,12 @@
 package p2p.service;
 
+import java.util.List;
+
 import p2p.model.Product;
 
 public interface ProductService {
 
-	public Product findAllProduct() throws Exception;
+	public List<Product> findAllProduct() throws Exception;
 	
 	public Product findProductById(int pid) throws Exception;
 	

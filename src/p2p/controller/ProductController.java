@@ -1,5 +1,7 @@
 package p2p.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,21 +19,12 @@ public class ProductController {
 	
 	@RequestMapping("/findAllProduct")
 	public String findAllProduct(Model model) throws Exception {
-		Product product = productService.findAllProduct();
-		System.out.println("success");
+		List<Product> product = productService.findAllProduct();
+		System.out.println("success"+product.size());
+		
 		model.addAttribute("products", product);
-		return "forward:/NewFile.jsp";
+		
+		return "forward:/product.jsp";
 	}
-	
-	@RequestMapping("/findProductById")
-	public String findProductById(String id,Model model) throws Exception{
-		Product product = productService.findProductById(Integer.valueOf(id));
-		System.out.println(id);
-		model.addAttribute("productById", product);
-		return "forward:/NewFile.jsp";
-	}
-	
-//	public String findProductByName() throws Exception{
-//		s
-//	}
+
 }

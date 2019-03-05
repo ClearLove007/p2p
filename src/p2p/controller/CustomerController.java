@@ -1,7 +1,5 @@
 package p2p.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +34,19 @@ public class CustomerController {
 		if(list!=null) {
 			httpSession.setAttribute("cid", list.getCid());
 			System.out.println(httpSession.getAttribute("cid"));
-			return "success";
+			return "forward:/WEB-INF/home.jsp";
 		}
 		
 		return "error";
+	}
+	
+	@RequestMapping("/backHome")
+	public String backHome() {
+		return "forward:/WEB-INF/home.jsp";
+	}
+	
+	@RequestMapping("/personal")
+	public String personal() {
+		return "forward:/WEB-INF/personal.jsp";
 	}
 }

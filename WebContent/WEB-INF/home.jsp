@@ -9,6 +9,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	       
+          <table width="100%" align="center">
+          	<tr>
+          		<td width="25%"  align="center"><a href="<%= request.getContextPath()%>/customer/backHome">首页</a></td>
+          		<td width="25%"  align="center"><a href="">借款</a></td>
+          		<td width="25%"  align="center"><a href="<%= request.getContextPath()%>/product/findAllProduct">借出</a></td>
+          		<td width="25%"  align="center"><a href="<%= request.getContextPath()%>/customer/personal">个人中心</a></td>
+          	</tr>         	
+          </table>
+   
 </body>
 </html>

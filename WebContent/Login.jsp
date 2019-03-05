@@ -7,7 +7,7 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Insert title here</title>
+<title>p2p金融理财平台</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
