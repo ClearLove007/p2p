@@ -12,4 +12,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from customer where cid = #{cid} and password = #{password}
 	</select>
 	
+	<select id="selectPassword" parameterType="String" resultType="String">
+		select PASSWORD FROM customer WHERE cid = #{_parameter}
+	</select>
+	
+	<select id="selectUpdatePassword" parameterType="String" resultType="String">
+		select tradepassword from customer where cid = #{_parameter}
+	</select>
+	
+	<update id="updatePassword" >
+		UPDATE customer SET password=#{newPassword} WHERE cid= #{cid}
+	</update>
+	
+	<update id="updateTradePassword" >
+		UPDATE customer SET tradepassword=#{newTradePassword} WHERE cid= #{cid}
+	</update>
+	
+	<select id="selectBankCard" parameterType="String" resultType="String">
+		select bankcard from customer where cid = #{cid}
+	</select>
+	
+	<select id="selectMoney" parameterType="String" resultType="Double">
+		select restmoney from bank WHERE bankcard = (SELECT bankcard from customer where cid = #{cid})
+	</select>
+	
+	<update id="updateMoney">
+		UPDATE bank SET restmoney = restmoney - #{price}  where bankcard = (SELECT bankcard from customer where cid = #{cid})
+	</update>
+	
 </mapper>

@@ -7,4 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findAllRecord" parameterType="String" resultType="Record">
 		select * from record where cid = #{_parameter}
 	</select>
+	
+	<insert id="insertRecord">
+		insert into record(cid,buytime,earnings,tradestate,pid) VALUES(#{cid},#{buytime},#{earnings},1,#{pid})
+	</insert>
 </mapper>

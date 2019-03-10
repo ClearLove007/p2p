@@ -34,7 +34,7 @@ public class CustomerController {
 		if(list!=null) {
 			httpSession.setAttribute("cid", list.getCid());
 			System.out.println(httpSession.getAttribute("cid"));
-			return "forward:/WEB-INF/home.jsp";
+			return "forward:/home.jsp";
 		}
 		
 		return "error";
@@ -42,11 +42,11 @@ public class CustomerController {
 	
 	@RequestMapping("/backHome")
 	public String backHome() {
-		return "forward:/WEB-INF/home.jsp";
+		return "forward:/home.jsp";
 	}
 	
 	@RequestMapping("/personal")
 	public String personal() {
-		return "forward:/WEB-INF/personal.jsp";
+		return "forward:/personal/personal.jsp";
 	}
 }

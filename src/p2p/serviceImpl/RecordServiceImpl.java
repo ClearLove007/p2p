@@ -1,5 +1,6 @@
 package p2p.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,12 @@ public class RecordServiceImpl implements RecordService {
 		// TODO 自动生成的方法存根
 		
 		return recordMapper.findAllRecord(cid);
+	}
+
+	@Override
+	public void insertRecord(String cid, String buytime, Double earnings, String pid) {
+		// TODO 自动生成的方法存根
+		recordMapper.insertRecord(cid, buytime, earnings, pid);
 	}
 
 }

@@ -22,10 +22,10 @@
           <table width="100%" align="center">
           	<tr>
           		<td width="16%"  align="center"><a href="<%= request.getContextPath()%>/record/findAllRecord">交易记录</a></td>
-          		<td width="16%"  align="center"><a href="<%= request.getContextPath()%>/personal/forwardbankcard">银行卡管理</a></td>
+          		<td width="16%"  align="center"><a href="<%= request.getContextPath()%>/personal/forwardBankcard">银行卡管理</a></td>
           		<td width="16%"  align="center"><a href="<%= request.getContextPath()%>/personal/forwardPassword">修改密码</a></td>
-          		<td width="16%"  align="center"><a href="">修改交易密码</a></td>
-          		<td width="16%"  align="center"><a href="">账户余额查询</a></td>
+          		<td width="16%"  align="center"><a href="<%= request.getContextPath()%>/personal/forwardTradePassword">修改交易密码</a></td>
+          		<td width="16%"  align="center"><a href="<%= request.getContextPath()%>/personal/forwardRestMoney">账户余额查询</a></td>
           		<td width="16%"  align="center"><a href="">提现</a></td>
           	</tr>
           </table>
@@ -33,11 +33,11 @@
           <br /><br />
           
           <h3 align="center">修改密码</h3>
-          <form action="" >
+          <form action="<%= request.getContextPath()%>/personal/updatePassword" >
           	<table align="center">
           		<tr>
           			<td>原密码:</td>
-          			<td><input type="text" placeholder="请输入原密码"/></td>
+          			<td><input type="text" placeholder="请输入原密码" name="password"/></td>
           		</tr>
           		<tr>
           			<td>新密码:</td>
@@ -45,7 +45,7 @@
           		</tr>
           		<tr>
           			<td>确认密码:</td>
-          			<td><input type="text" placeholder="再次输入新密码"/></td>
+          			<td><input type="text" placeholder="再次输入新密码" name="newPassword"/></td>
           		</tr>
           		<tr>
           			<td><input type="reset" value="重置"/></td>

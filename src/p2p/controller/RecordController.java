@@ -30,6 +30,6 @@ public class RecordController {
 		
 		model.addAttribute("records", list);
 		
-		return "forward:/record.jsp";
+		return "forward:/personal/record.jsp";
 	}
 }
