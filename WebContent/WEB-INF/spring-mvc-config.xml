@@ -18,6 +18,7 @@
    
     <context:component-scan base-package="p2p.controller"/>
      <mvc:annotation-driven></mvc:annotation-driven>
+     <mvc:default-servlet-handler/>
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- View中用到的相关技术 -->

@@ -22,8 +22,8 @@ public class CustomerController {
 			customerService.insertCustomerInformation(customer);
 			return "forward:/success.jsp";
 		} catch (Exception e) {
-			return "forward:/error.jsp";
-		}
+			return "Login";
+		} 
 	}
 	
 	@RequestMapping("/login")
@@ -37,7 +37,7 @@ public class CustomerController {
 			return "forward:/home.jsp";
 		}
 		
-		return "error";
+		return "Login";
 	}
 	
 	@RequestMapping("/backHome")
