@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>产品</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/home.css"/>
 </head>
 
 <body>

@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/personal.css"/>
 </head>
 <body>
 	      <table width="100%" align="center">
@@ -31,27 +32,28 @@
           </table>
           
           <br /><br />
-          
-          <h3 align="center">修改密码</h3>
-          <form action="<%= request.getContextPath()%>/personal/updatePassword" >
-          	<table align="center">
-          		<tr>
-          			<td>原密码:</td>
-          			<td><input type="text" placeholder="请输入原密码" name="password"/></td>
-          		</tr>
-          		<tr>
-          			<td>新密码:</td>
-          			<td><input type="text" placeholder="请输入新密码"/></td>
-          		</tr>
-          		<tr>
-          			<td>确认密码:</td>
-          			<td><input type="text" placeholder="再次输入新密码" name="newPassword"/></td>
-          		</tr>
-          		<tr>
-          			<td><input type="reset" value="重置"/></td>
-          			<td align="center"><input type="submit" value="提交"/></td>
-          		</tr>
-          	</table>
-          </form>
+          <div id="update_frame">
+	          <h3 align="center">修改密码</h3>
+	          <form action="<%= request.getContextPath()%>/personal/updatePassword" method="post">
+	          	<table align="center">
+	          		<tr>
+	          			<td><label class="label_input">原密码:</label></td>
+	          			<td><input class="text_field" type="text" placeholder="请输入原密码" name="password"/></td>
+	          		</tr>
+	          		<tr>
+	          			<td><label class="label_input">新密码:</label></td>
+	          			<td><input class="text_field" type="text" placeholder="请输入新密码"/></td>
+	          		</tr>
+	          		<tr>
+	          			<td><label class="label_input">确认密码:</label></td>
+	          			<td><input class="text_field" type="text" placeholder="再次输入新密码" name="newPassword"/></td>
+	          		</tr>
+		          	<tr>
+		          		<td><input type="reset" value="重置"/></td>
+		          		<td align="center"><input type="submit" value="提交"/></td>
+		          	</tr>
+	          	</table>
+          	</form>
+          </div>
 </body>
 </html>

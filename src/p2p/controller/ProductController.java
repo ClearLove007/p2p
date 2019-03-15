@@ -53,9 +53,12 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/insertRecord")
-	public String insertRecord(String pid,String cid,String buytime,String price,String rate,String days) throws ParseException {
+	public String insertRecord(String pid,String cid,String buytime,String price,String rate,String days,String tradePassword) throws ParseException {
 		
 		if(Double.valueOf(price)>customerService.selectMoney(cid)) {
+			return "forward:/error.jsp";
+		}
+		if(!(customerService.selectUpdatePassword(cid).equals(tradePassword))) {
 			return "forward:/error.jsp";
 		}
 		
@@ -64,7 +67,7 @@ public class ProductController {
 		customerService.updateMoney(Double.valueOf(price), cid);
 		recordService.insertRecord(cid, buytime, earnings, pid);
 		
-		return "forward:/personal/personal.jsp";
+		return "forward:/record/findAllRecord";
 	}
 
 	/*

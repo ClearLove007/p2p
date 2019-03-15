@@ -6,8 +6,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/product.css"/>
 </head>
 <body>
+	
+	<table width="100%" align="center">
+          	<tr>
+          		<td width="25%"  align="center"><a href="<%= request.getContextPath()%>/customer/backHome">首页</a></td>
+          		<td width="25%"  align="center"><a href="">借款</a></td>
+          		<td width="25%"  align="center"><a href="<%= request.getContextPath()%>/product/findAllProduct">借出</a></td>
+          		<td width="25%"  align="center"><a href="<%= request.getContextPath()%>/customer/personal">个人中心</a></td>
+          	</tr>         	
+    </table>
+          
+    <br /><br />
 	
 	<script type="text/javascript">
 		function isMoney(){
@@ -22,7 +34,8 @@
 	</script>
 	
 	<form action="<%= request.getContextPath()%>/product/insertRecord" onsubmit="isMoney()">
-			<table align="center" >
+			<div id="product_frame">
+				<table align="center" >
 			  <tbody align="center">
 			  
 			  	 <tr>
@@ -39,10 +52,17 @@
 				     <td width="25%"><input type"text" placeholder="请输入要购买的金额" name="price" id="price"></input></td>
 				     <td><input type="hidden" name="rate" value="${rate}"></input></td>
 				     <td><input type="hidden" name="days" value="${days}"></input></td>
-				     <td><input type = "submit" value="购买" ></td>
+				     
 			  	 </tr>
 			  </tbody>
-		</table>
+			</table>
+			</div>
+			<div id="login_frame">
+				<p><label class="label_input">请输入交易密码：</label><input class="text_field" type="password" name="tradePassword"></input></p>
+				<div id="login_control" >
+					<p><input class="btn_login" type = "submit" value="购买" ></p>
+				</div>
+			</div>
 	</form>
 </body>
 </html>
