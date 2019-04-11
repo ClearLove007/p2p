@@ -7,6 +7,24 @@ public class Product {
 	private String starttime;
 	private String endtime;
 	private int rate;
+	private int time;
+	private double lowmoney;
+
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
+	}
+
+	public double getLowmoney() {
+		return lowmoney;
+	}
+
+	public void setLowmoney(double lowmoney) {
+		this.lowmoney = lowmoney;
+	}
 
 	public int getPid() {
 		return pid;
@@ -51,8 +69,8 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [pid=" + pid + ", pname=" + pname + ", starttime=" + starttime + ", endtime=" + endtime
-				+ ", rate=" + rate + "]";
+				+ ", rate=" + rate + ", time=" + time + ", lowmoney=" + lowmoney + "]";
 	}
-	
+
 	
 }

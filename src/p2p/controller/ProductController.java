@@ -30,6 +30,33 @@ public class ProductController {
 	@Autowired
 	private RecordService recordService;
 	
+	@RequestMapping("/findThreeMonth")
+	public String findThreeMonth(Model model) throws Exception {
+		List<Product> product = productService.findProduct3();
+		System.out.println("success"+product.size());
+		
+		model.addAttribute("product3", product);
+		return "forward:/product/3Month.jsp";
+	}
+	
+	@RequestMapping("/findSixMonth")
+	public String findSixMonth(Model model) throws Exception {
+		List<Product> product = productService.findProduct6();
+		System.out.println("success"+product.size());
+		
+		model.addAttribute("product6", product);
+		return "forward:/product/6Month.jsp";
+	}
+	
+	@RequestMapping("/findTwelveMonth")
+	public String findTwelveMonth(Model model) throws Exception {
+		List<Product> product = productService.findProduct12();
+		System.out.println("success"+product.size());
+		
+		model.addAttribute("product12", product);
+		return "forward:/product/12Month.jsp";
+	}
+	
 	@RequestMapping("/findAllProduct")
 	public String findAllProduct(Model model) throws Exception {
 		List<Product> product = productService.findAllProduct();

@@ -45,4 +45,22 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.findProductByName(name);
 	}
 
+	@Override
+	public List<Product> findProduct3() throws Exception {
+		// TODO 自动生成的方法存根
+		return productMapper.findProduct3();
+	}
+
+	@Override
+	public List<Product> findProduct6() throws Exception {
+		// TODO 自动生成的方法存根
+		return productMapper.findProduct6();
+	}
+
+	@Override
+	public List<Product> findProduct12() throws Exception {
+		// TODO 自动生成的方法存根
+		return productMapper.findProduct12();
+	}
+
 }

@@ -31,7 +31,8 @@
           
           <br /><br />
           
-          <tr>
+         <table align="center">
+         	 <tr>
           	<td>
           		您的银行卡：
           	</td>
@@ -39,5 +40,6 @@
           		${requestScope.bankcard}
           	</td>
           </tr>
+         </table>
 </body>
 </html>

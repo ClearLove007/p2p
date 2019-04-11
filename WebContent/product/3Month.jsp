@@ -49,7 +49,7 @@
 				     <td width="20%"><label>利率(/100)</label></td>
 			  	 </tr>
 			  	
-			  	<c:forEach var="p" items="${products}">
+			  	<c:forEach var="p" items="${product3}">
 			  		<form action="<%= request.getContextPath()%>/product/buyProduct">
 				  		<tr>
 					     <td><label>${p.pid}</label> <input type = "hidden" name="pid" value="${p.pid}" ></td>

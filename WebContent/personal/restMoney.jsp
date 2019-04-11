@@ -32,8 +32,8 @@
           </table>
           
           <br /><br />
-          
-          <tr>
+          <table align="center">
+          	<tr>
           	<td>
           		您的账户余额：
           	</td>
@@ -41,5 +41,7 @@
           		${requestScope.money}元
           	</td>
           </tr>
+          </table>
+          
 </body>
 </html>

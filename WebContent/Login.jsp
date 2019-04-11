@@ -10,21 +10,8 @@
 <title>p2p金融理财平台</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css"/>
 </head>
-<body>
-	<!--登录注册表-->
-		
-		<div id="login_frame">
-			<form action="<%= request.getContextPath()%>/customer/login" method="post" id="login" onsubmit=" return login()">
-					<h3>登录</h3>
-					<p><label class="label_input">账号：</label><input type="text" class="text_field" placeholder="请输入账号" name="cid" id="username"/></p>
-					<p><label class="label_input">密码：</label><input type="password" class="text_field" placeholder="请输入密码" name="password" id="opassword"/></p>
-					
-					<div id="login_control">
-						<input class="btn_login" type="submit" value="登陆"/>
-					</div>
-			</form>
-		</div>
-		<script type="text/javascript">
+
+<script type="text/javascript">
 		
 			function login() {
 				 
@@ -84,7 +71,22 @@
 				return true;
 			}
 		</script>
+
+<body>
+	<!--登录注册表-->
 		
+		<div id="login_frame">
+			<form action="<%= request.getContextPath()%>/customer/login" method="post" id="login" onsubmit=" return login()">
+					<h3>登录</h3>
+					<p><label class="label_input">账号：</label><input type="text" class="text_field" placeholder="请输入账号" name="cid" id="username"/></p>
+					<p><label class="label_input">密码：</label><input type="password" class="text_field" placeholder="请输入密码" name="password" id="opassword"/></p>
+					
+					<div id="login_control">
+						<input class="btn_login" type="submit" value="登陆"/>
+					</div>
+			</form>
+			<a href="">忘记密码？</a>
+		</div>
 		<div id="register_frame">
 			<form action="<%= request.getContextPath()%>/customer/register" method="post" onsubmit="return isCardNo();isTelNo();isPasswordSame();isBankCardNo()">
 					<h3>注册</h3>

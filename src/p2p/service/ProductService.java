@@ -15,4 +15,10 @@ public interface ProductService {
 	public void insertProduct(Product product) throws Exception;
 	
 	public Product findProductByName(String name) throws Exception;
+	
+	public List<Product> findProduct3() throws Exception;
+	
+	public List<Product> findProduct6() throws Exception;
+	
+	public List<Product> findProduct12() throws Exception;
 }

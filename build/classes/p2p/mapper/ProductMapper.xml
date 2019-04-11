@@ -9,6 +9,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from product
 	</select>
 
+	<select id="findProduct3" resultType="Product">
+		select * from product where time = 3
+	</select>
+	
+	<select id="findProduct6" resultType="Product">
+		select * from product where time = 6
+	</select>
+	
+	<select id="findProduct12" resultType="Product">
+		select * from product where time = 12
+	</select>
+	
 	<select id="findProductById" parameterType="int" resultType="Product">
 		SELECT * FROM product WHERE pid = #{id}
 	</select>
