@@ -27,7 +27,7 @@
           		<td width="16%"  align="center"><a href="<%= request.getContextPath()%>/personal/forwardPassword">修改密码</a></td>
           		<td width="16%"  align="center"><a href="<%= request.getContextPath()%>/personal/forwardTradePassword">修改交易密码</a></td>
           		<td width="16%"  align="center"><a href="<%= request.getContextPath()%>/personal/forwardRestMoney">账户余额查询</a></td>
-          		<td width="16%"  align="center"><a href="">提现</a></td>
+          		<td width="16%"  align="center"><a href="<%= request.getContextPath()%>/personal/forwardRiskTest">风险评估</a></td>
           	</tr>
           </table>
           

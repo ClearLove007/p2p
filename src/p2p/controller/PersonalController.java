@@ -40,6 +40,12 @@ public class PersonalController {
 		return "forward:/personal/bankcard.jsp";
 	}
 	
+	@RequestMapping("/forwardRiskTest")
+	public String forwardRiskTest() {
+		
+		return "forward:/personal/riskTest.jsp";
+	}
+	
 	@RequestMapping("/forwardRestMoney")
 	public String forwardRestMoney(Model model,HttpSession httpSession) {
 		String cid = (String) httpSession.getAttribute("cid");
