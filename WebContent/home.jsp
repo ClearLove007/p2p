@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>p2p金融理财平台</title>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/play.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/home.css"/>
 </head>
 <body>
@@ -26,5 +28,6 @@
 				<li><a href="<%= request.getContextPath()%>/product/findAllProduct">借出</a></li>
 				<li><a href="<%= request.getContextPath()%>/customer/personal">个人中心</a></li>
 			</ul>
+			
 </body>
 </html>

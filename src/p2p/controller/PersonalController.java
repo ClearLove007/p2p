@@ -79,7 +79,7 @@ public class PersonalController {
 		String oldPass = customerService.selectUpdatePassword(cid);
 		
 		if(oldPass.equals(tradePassword)) {
-			customerService.updatePassword(newTradePassword, cid);
+			customerService.updateTradePassword(newTradePassword, cid);
 			return "forward:/personal/updateTradePassword.jsp";
 		}
 		

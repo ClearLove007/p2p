@@ -89,7 +89,7 @@ public class ProductController {
 			return "forward:/error.jsp";
 		}
 		
-		Double earnings = Double.valueOf(price) * Integer.parseInt(rate) * Integer.parseInt(days)/3000;
+		Double earnings = Math.abs(Double.valueOf(price) * Integer.parseInt(rate) * Integer.parseInt(days)/3000);
 		
 		customerService.updateMoney(Double.valueOf(price), cid);
 		recordService.insertRecord(cid, buytime, earnings, pid);
