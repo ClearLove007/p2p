@@ -1,0 +1,239 @@
+package com.spring.util.util;
+
+import org.springframework.util.ObjectUtils;
+
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
+
+public class CacheUtil {
+
+    private static ConcurrentHashMap<Object, Cache> map;
+    private static ScheduledExecutorService threadPool = ThreadPoolUtils.scheduledExecutorService();
+    private static BlockingQueue<Object> keyQueue = new LinkedBlockingDeque<>();
+
+    public CacheUtil(){
+        this(64);
+    }
+
+    public CacheUtil(final int caches){
+        if(caches<1){
+            throw new RuntimeException("无效的缓存大小");
+        }
+        map = new ConcurrentHashMap(caches);
+        threadPool.schedule(new Task(), 1, TimeUnit.HOURS);
+    }
+
+    /**
+     * put操作
+     * @param key
+     * @param value
+     * @return
+     */
+    public boolean put(Object key, Object value){
+        return put(key, value, 3600, 10);
+    }
+
+    public boolean put(Object key, Object value, long expireTime, Integer hit){
+        if(!checkNotNull(key) || !checkNotNull(value) || !checkNotNull(expireTime) || !checkNotNull(hit)){
+            return false;
+        }
+        Cache cache = new Cache(key, value, expireTime, hit);
+        keyQueue.offer(key);
+        map.put(key, cache);
+        return true;
+    }
+
+    /**
+     * remove操作
+     * @param key
+     * @return
+     */
+    public boolean remove(Object key){
+        if(containsKey(key)){
+            map.remove(key);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * contains操作
+     * @param key
+     * @return
+     */
+    public boolean containsKey(Object key){
+        return map.containsKey(key);
+    }
+
+    /**
+     * get操作
+     * @param key
+     * @return
+     */
+    public Object get(Object key){
+        if(!checkNotNull(key)){
+            return null;
+        }
+        Cache cache = map.get(key);
+        cache.getAndAdd();
+        cache.setLastAccessTime(new Long(DateUtils.dateFormat1(new Date())));
+        return cache.getValue();
+    }
+
+    /**
+     * get last access time
+     * @param key
+     * @return
+     */
+    public Long getLastAccessTime(Object key){
+        if(!checkNotNull(key)){
+            return null;
+        }
+        return map.get(key).getLastAccessTime();
+    }
+
+    /**
+     * get hit count
+     * @param key
+     * @return
+     */
+    public Integer getHitCount(Object key){
+        if(!checkNotNull(key)){
+            return null;
+        }
+        return map.get(key).getHitCount();
+    }
+
+    /**
+     * clear操作
+     * @return
+     */
+    public boolean clear(){
+        map.clear();
+        return true;
+    }
+
+    public boolean containsValue(Object value){
+        return map.containsValue(value);
+    }
+
+    /**
+     * 检测对象为null
+     * @param o
+     * @return
+     */
+    private boolean checkNotNull(Object o){
+        return !ObjectUtils.isEmpty(o);
+    }
+
+    /**
+     * 回收线程
+     */
+    private class Task implements Runnable{
+
+        @Override
+        public void run() {
+            recycle();
+        }
+
+        private void recycle(){
+            List<Object> keyList = new ArrayList<>();
+            keyQueue.drainTo(keyList);
+            for (Object key:keyList) {
+                map.remove(key);
+            }
+        }
+    }
+
+    /**
+     * 缓存类
+     */
+    private class Cache implements Comparable<Cache> {
+
+        private Object key;
+
+        private Object value;
+
+        private AtomicLong lastAccessTime;
+
+        private long createTime;
+
+        private long expireTime;
+
+        private AtomicInteger hitCount;
+
+        private Integer hit;
+
+        public Cache(Object key, Object value, long expireTime, Integer hit){
+            this.key = key;
+            this.value = value;
+            this.expireTime = expireTime;
+            this.hit = hit;
+            this.createTime = new Long(DateUtils.dateFormat1(new Date()));
+            this.hitCount = new AtomicInteger(0);
+            this.lastAccessTime = new AtomicLong(0);
+        }
+
+        public Integer getHit(){
+            return hit;
+        }
+
+        public Object getKey() {
+            return key;
+        }
+
+        public void setKey(Object key) {
+            this.key = key;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public void setValue(Object value) {
+            this.value = value;
+        }
+
+        public long getCreateTime() {
+            return createTime;
+        }
+
+        public void setCreateTime(long createTime) {
+            this.createTime = createTime;
+        }
+
+        public long getExpireTime() {
+            return expireTime;
+        }
+
+        public void setExpireTime(long expireTime) {
+            this.expireTime = expireTime;
+        }
+
+        public Integer getAndAdd(){
+            return hitCount.getAndAdd(1);
+        }
+
+        public Integer getHitCount(){
+            return hitCount.get();
+        }
+
+        public void setLastAccessTime(long time){
+            lastAccessTime.set(time);
+        }
+
+        public Long getLastAccessTime(){
+            return lastAccessTime.get();
+        }
+
+        @Override
+        public int compareTo(Cache o) {
+            if(!checkNotNull(o) || !checkNotNull(o.getValue()) || !ObjectUtils.nullSafeEquals(this.getValue(), o.getValue())){
+                return 1;
+            }
+            return 0;
+        }
+    }
+}
