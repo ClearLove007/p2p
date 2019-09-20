@@ -1,0 +1,56 @@
+package com.spring.util.util;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateUtils {
+    private static Logger log = LoggerFactory.getLogger(DateUtils.class);
+    public static final String DATE_FORMAT_1 = "yyyyMMddhhmmss";
+    public static final String DATE_FORMAT_2 = "yyyy-MM-dd hh:mm:ss";
+
+    /**
+     * string 转 Date
+     * @param format
+     * @param source
+     * @return
+     */
+    public static Date stringToDate(String format, String source){
+        try{
+           return new SimpleDateFormat(format).parse(source);
+        } catch (ParseException e){
+            log.error("时间格式转换失败");
+        }
+        return null;
+    }
+
+    public static Date toDateFormat_1(String source){
+        return stringToDate(DATE_FORMAT_1, source);
+    }
+
+    public static Date toDateFormat_2(String source){
+        return stringToDate(DATE_FORMAT_2, source);
+    }
+
+    /**
+     * date 转 string
+     * @param format
+     * @param source
+     * @return
+     */
+    public static String dateToString(String format, Date source){
+        return new SimpleDateFormat(format).format(source);
+    }
+
+    public static String dateFormat1(Date source){
+        return dateToString(DATE_FORMAT_1, source);
+    }
+
+    public static String dateFormat2(Date source){
+        return dateToString(DATE_FORMAT_2, source);
+    }
+
+}
